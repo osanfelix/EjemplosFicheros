@@ -3,8 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+// Tutorials: https://docs.oracle.com/javase/tutorial/essential/io/index.html
+//Garceta: pag. 257
+
+// file I/O byte streams, FileInputStream and FileOutputStream
+
 package ejemplosficheros;
 
+import static ejemplosficheros.Streams.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -104,20 +111,23 @@ public class EjemplosFicheros
                 if(!existe)
                     System.out.println(eleDir + " no esta en el fichero");
             }
-        }
-        catch (FileNotFoundException ex)
-        {
+        } catch (FileNotFoundException ex) {
             System.out.println("ERROR!!!!");
-        }
-        catch (IOException ex)
+        } catch (IOException ex)
         {
             System.out.println("ERROR!!!!");
         }
     }
     
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
-        ListarDirectorioGuardarEnFichero();
-        compararElementosFicheroDirectorio();
+		try {
+			// Streams.java
+			copyBytes(false, "example.txt", "example_bytes.txt");
+			copyChars();
+			
+			ListarDirectorioGuardarEnFichero();
+			compararElementosFicheroDirectorio();
+		} catch (IOException ex){System.out.println(ex); }
     }
 }
