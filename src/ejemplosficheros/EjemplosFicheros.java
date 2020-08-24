@@ -114,7 +114,8 @@ public class EjemplosFicheros
 			// Streams.java
 			copyBytes(false, "example.txt", "example_bytes.txt");
 			copyChars();
-
+			copyBytesArray(false, "example.txt", "example_bytes_array.txt");
+			
 			ListarDirectorioGuardarEnFichero();
 			compararElementosFicheroDirectorio();
 		} catch (IOException ex){System.out.println(ex); }

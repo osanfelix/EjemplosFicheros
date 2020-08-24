@@ -51,6 +51,37 @@ public class Streams
 		}
 	}
 	
+	// Working with an array
+	public static void copyBytesArray(boolean buffered, String file_in, String file_out) throws IOException
+	{
+		InputStream in = null;
+		OutputStream out = null;
+
+		int counter = 0;
+		try {
+			in = buffered ? new FileInputStream(file_in)
+				: new BufferedInputStream( new FileInputStream(file_in));
+			
+			out = buffered ? new FileOutputStream(file_out)
+			: new BufferedOutputStream( new FileOutputStream(file_out));
+			
+			byte[] byteArray = new byte[1024];
+			int bytesCount = 0;
+			
+			while((bytesCount = in.read(byteArray)) != -1) {
+				out.write(byteArray, 0, bytesCount);
+				counter++;				
+			}
+		} finally {
+			if (in != null) {
+				in.close();
+			}
+			if (out != null) {
+				out.close();
+			}
+			System.out.println("Cost: " + counter);
+		}
+	}
 	
 	// Only change FileInputStream to FileRead
 	// Only change FileOutputStream to FileWriter
